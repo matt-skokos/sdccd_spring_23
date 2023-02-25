@@ -1,0 +1,38 @@
+def bit_operations(str_1: str, str_2: str):
+    """ Performs the operations on the bit strings. """
+    length1, length2 = len(str_1), len(str_1)
+    add_zeros = max(str_1, str_2)
+
+    comp_1 = ''
+    for i in str_1:
+        comp_1 += flip(i)
+
+    union = (int(str_1, 2) | int(str_2, 2))
+    intersect = (int(str_1, 2) & int(str_2, 2))
+    complement = ~int(str_1, 2)
+    print(f"A union B:       {str(bin(union)[2:]).zfill(len(add_zeros))}")
+    print(f"A intersect B:   {str(bin(intersect)[2:]).zfill(len(add_zeros))}")
+    print(f"Complement of A: {comp_1}")
+
+
+def flip(c):
+    """Helper function to return binary complement string. """
+    return '1' if (c == '0') else '0'
+
+def menu():
+    """Prompt user for bit strings, check for valid type input. """
+    try:
+        str_1 = input("Enter the bit string representation of A: ")
+        str_2 = input("Enter the bit string representation of B: ")
+        bit_operations(str_1, str_2)
+    except ValueError:
+        print("You need to enter a bit string!")
+        return
+
+
+def main():
+    menu()
+
+
+if __name__ == "__main__":
+    main()
